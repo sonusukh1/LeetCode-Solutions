@@ -1,0 +1,49 @@
+// Explanation Given below
+class Solution {
+    public int countDistinctIntegers(int[] nums) {
+        Set<Integer> s = new HashSet<>();
+
+        int rev=0;
+       for(int i=0;i<nums.length;i++)
+       {
+        s.add(nums[i]);
+       }
+       for(int i=0;i<nums.length;i++)
+       {
+        s.add(count(nums[i]));
+         
+         //rev=0;
+          
+
+       }
+         
+        return s.size();
+
+    }
+    public int count(int val)
+    {
+        int rev=0;
+        while(val>0)
+         {
+            rev=rev*10+(val%10);
+            val=val/10;
+         }
+       return rev;
+    }
+}
+___________________EXPLANATION________________
+
+Intuition
+We will traverse the whole array look for another same number if found then return value by1;
+else continue;
+
+Approach
+Took a Set So i can store only unique digit and traverse the array element one by one and do reverse of each and every number using count function and aad the reverse number in the Set if the added value is unique it will be added otherwise not.
+at the end we will have only the unique value their number will be equal to Set size so we will return set.size();
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
